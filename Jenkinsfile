@@ -1,0 +1,5 @@
+timestamps {
+    node {
+        checkout scm
+    }
+}
