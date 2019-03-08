@@ -1,9 +1,20 @@
+@Library("workflowlibs@master") _
+
+import com.halo.ims.Application
+import com.halo.ims.Utils
+
 timestamps {
     node {
+
+        app = new Application(this, "ims")
+        utils = new Utils(this)
+
         stage('Build') {
             checkout scm
-            sh "mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER} versions:commit"
-            sh "mvn clean package -DskipTests"
+            echo "mvn using utils"
+            utils.mvn()
+            // sh "mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER} versions:commit"
+            // sh "mvn clean package -DskipTests"
         }
         
         stage('Publish') {
