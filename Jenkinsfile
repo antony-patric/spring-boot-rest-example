@@ -6,8 +6,12 @@ import com.halo.ims.Utils
 imsSpec(){
     app = new Application(this, "ims")
     utils = new Utils(this)
-    stage('Build'){
+    stage("Build"){
+        echo "Build stage"
         utils.mvn()
+    }
+    stage("Publish"){
+        echo "Publish stage"
     }
 }
 // timestamps {
