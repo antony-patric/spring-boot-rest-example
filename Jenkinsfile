@@ -3,7 +3,7 @@ timestamps {
         stage('Build') {
             checkout scm
             sh "mvn versions:set -DnewVersion=1.0.${env.BUILD_NUMBER} versions:commit"
-            sh "mvn clean package"
+            sh "mvn clean package -DskipTests"
         }
         
         stage('Publish') {
@@ -14,6 +14,8 @@ timestamps {
                     java -version
                     "
                     '''
+                sh "java -version"
+                sh "uptime"
             }
         }
     }
