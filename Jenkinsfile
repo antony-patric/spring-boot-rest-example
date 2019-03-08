@@ -1,6 +1,6 @@
 timestamps {
     node {
         checkout scm
-        mvn clean package
+        sh "mvn clean package"
     }
 }
