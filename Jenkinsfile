@@ -9,8 +9,9 @@ timestamps {
         stage('Publish') {
             sshagent(['private-ssh-key']) {
                 sh '''
-                    ssh -o StrictHostKeyChecking=no -tt -l jenkins 192.168.0.20"
+                    ssh -o StrictHostKeyChecking=no -l jenkins 192.168.0.20"
                     uptime
+                    java -version
                     "
                     '''
             }
