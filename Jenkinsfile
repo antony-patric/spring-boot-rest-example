@@ -10,11 +10,13 @@ imsSpec(){
         echo "Build stage"
         utils.mvn()
     }
-    stage("Publish"){
+    
+}
+stage("Publish"){
         echo "Publish stage"
+        echo "${env.BUILD_NUMBER}"
         sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
     }
-}
 // timestamps {
 //     node {
 
