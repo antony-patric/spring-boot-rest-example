@@ -3,23 +3,28 @@
 import com.halo.ims.Application
 import com.halo.ims.Utils
 
-imsSpec(){
-    app = new Application(this, "ims")
-    utils = new Utils(this)
-    stage("Build"){
-        echo "Build stage"
-        utils.mvn()
-        pwd()
-    }
+timestamps{
+    node{
+        imsSpec(){
+            app = new Application(this, "ims")
+            utils = new Utils(this)
+            stage("Build"){
+                echo "Build stage"
+                utils.mvn()
+                pwd()
+            }
 
-    
-}
-stage("Publish"){
-        echo "Publish stage"
-        echo "${env.BUILD_NUMBER}"
-        pwd()
-        sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
+            
+        }
+        stage("Publish"){
+                echo "Publish stage"
+                echo "${env.BUILD_NUMBER}"
+                pwd()
+                sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
+            }
     }
+}
+
 // timestamps {
 //     node {
 
