@@ -13,9 +13,10 @@ timestamps{
                 utils.mvn()
             }
 
-        echo "${env.JOB_STATUS}"
-        echo "after --"
-        echo env.JOB_STATUS
+        // echo "${env.JOB_STATUS}"
+        // echo "after --"
+        // echo env.JOB_STATUS
+        echo sh(script: 'env|sort', returnStdout: true)
             
         }
         if("${env.BRANCH_NAME}"!="master"){
