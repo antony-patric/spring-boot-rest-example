@@ -17,13 +17,14 @@ timestamps{
         // echo "after --"
         // echo env.JOB_STATUS
         echo sh(script: 'env|sort', returnStdout: true)
-        stage("Print"){
-            echo "Build Number - ${env.BUILD_NUMBER}"
-
-            echo "${env.JOB_NAME}"
-        }
+     
             
         }
+               stage("Print"){
+                echo "Build Number - ${env.BUILD_NUMBER}"
+
+                echo "${env.JOB_NAME}"
+            }
         if("${env.BRANCH_NAME}"!="master"){
             echo "Non master branch. Returning - ${env.STAGE_NAME}"
             currentBuild.result = 'SUCCESS'
