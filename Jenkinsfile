@@ -11,7 +11,6 @@ timestamps{
             stage("Build"){
                 echo "Build stage"
                 utils.mvn()
-                // echo $pwd
             }
 
             
@@ -22,9 +21,10 @@ timestamps{
                 echo sh(script: 'env|sort', returnStdout: true)
                 echo "${env.PWD}"
                 echo "after"
-                sshagent(['private-ssh-key']) {
-                sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
-                }
+                deploy(["app": "spring-boot-example"])
+                // sshagent(['private-ssh-key']) {
+                // sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
+                // }
             }
     }
 }
