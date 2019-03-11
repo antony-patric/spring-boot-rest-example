@@ -4,7 +4,7 @@ import com.halo.ims.Application
 import com.halo.ims.Utils
 
 timestamps{
-    node{
+    // node{
         imsSpec(){
             app = new Application(this, "ims")
             utils = new Utils(this)
@@ -15,11 +15,11 @@ timestamps{
 
             
         }
-            if("${env.BRANCH_NAME}"!="master"){
-                echo "Non master branch. Returning - ${env.STAGE_NAME}"
-                currentBuild.result = 'SUCCESS'
-                return
-            }
+            // if("${env.BRANCH_NAME}"!="master"){
+            //     echo "Non master branch. Returning - ${env.STAGE_NAME}"
+            //     currentBuild.result = 'SUCCESS'
+            //     return
+            // }
         stage("Publish"){
                 echo "Publish stage"
                 echo "${env.BUILD_NUMBER}"
@@ -31,7 +31,7 @@ timestamps{
                 // sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
                 // }
             }
-    }
+    // }
 }
 
 // timestamps {
