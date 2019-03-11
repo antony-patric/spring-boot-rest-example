@@ -18,7 +18,9 @@ timestamps{
         // echo env.JOB_STATUS
         echo sh(script: 'env|sort', returnStdout: true)
         stage("Print"){
-            echo "${env.JOB_STATUS}"
+            echo "Build Number - ${env.BUILD_NUMBER}"
+
+            echo "${env.JOB_NAME}"
         }
             
         }
