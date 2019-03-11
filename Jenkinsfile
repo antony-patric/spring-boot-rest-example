@@ -21,7 +21,7 @@ timestamps{
                 echo sh(script: 'env|sort', returnStdout: true)
                 echo "${env.PWD}"
                 echo "after"
-                deploy([app: "spring-boot-rest-example",  env: "staging"])
+                deploy([app: "spring-boot-rest-example", port: "9080", env: "staging"])
                 // sshagent(['private-ssh-key']) {
                 // sh "scp target/spring-boot-rest-example-1.0.${env.BUILD_NUMBER}.war jenkins@192.168.0.20:/opt/spring/sample/staging/spring-boot-rest-example.war"
                 // }
