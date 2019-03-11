@@ -17,6 +17,9 @@ timestamps{
         // echo "after --"
         // echo env.JOB_STATUS
         echo sh(script: 'env|sort', returnStdout: true)
+        stage("Print"){
+            echo "${env.JOB_STATUS}"
+        }
             
         }
         if("${env.BRANCH_NAME}"!="master"){
