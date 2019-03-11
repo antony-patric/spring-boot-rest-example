@@ -15,6 +15,11 @@ timestamps{
 
             
         }
+            if("${env.BRANCH_NAME}"!="master"){
+                echo "Non master branch. Returning - ${env.STAGE_NAME}"
+                currentBuild.result = 'SUCCESS'
+                return
+            }
         stage("Publish"){
                 echo "Publish stage"
                 echo "${env.BUILD_NUMBER}"
